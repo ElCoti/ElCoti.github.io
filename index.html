@@ -6,6 +6,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
+
 <div class="max-w-screen-xl mx-auto">
     <!--NavBar-->
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
@@ -17,7 +18,7 @@
                     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">WeatherSearch</span>
                 </div>
 
-                <form class="max-w-lg mx-auto flex items-center">
+                <form class="max-w-lg mx-auto flex items-center" onsubmit="showWeather(); return false;">
                     <div class="relative">
                         <!--Search icon-->
                         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -26,7 +27,7 @@
                             </svg>
                         </div>
                         <input type="search" id="cityInput" class="block w-auto min-w-[300px] p-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter a city name" required />
-                        <button type="submit" onclick="showWeather()"  class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm py-1 px-3 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+                        <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm py-1 px-3 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
                     </div>
                 </form>
             </div>
@@ -37,47 +38,43 @@
     <div class="ml-2 grid grid-cols-3 gap-3 mt-24">
         <div  class="mr-4 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Temperature</h5>
-            <p class="font-normal text-gray-700 dark:text-gray-400">34</p>
+            <p id="temperature" class="font-normal text-gray-700 dark:text-gray-400">-</p>
         </div>
         <div  class="mr-4 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Felt temperature</h5>
-            <p class="font-normal text-gray-700 dark:text-gray-400">34</p>
+            <h5  class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Felt temperature</h5>
+            <p id="feltTemp" class="font-normal text-gray-700 dark:text-gray-400">-</p>
         </div>
         <div  class="mr-4 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Pressure</h5>
-            <p class="font-normal text-gray-700 dark:text-gray-400">34</p>
+            <p id="pressure" class="font-normal text-gray-700 dark:text-gray-400">-</p>
         </div>
         <div  class="mr-4 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Sea level</h5>
-            <p class="font-normal text-gray-700 dark:text-gray-400">34</p>
+            <p id="seaLevel" class="font-normal text-gray-700 dark:text-gray-400">-</p>
         </div>
         <div  class="mr-4 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Visibility</h5>
-            <p class="font-normal text-gray-700 dark:text-gray-400">34</p>
+            <p id="visibility" class="font-normal text-gray-700 dark:text-gray-400">-</p>
         </div>
         <div  class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Wind</h5>
-            <p class="font-normal text-gray-700 dark:text-gray-400">34</p>
+            <p id="wind" class="font-normal text-gray-700 dark:text-gray-400">-</p>
         </div>
         <div  class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Humidity</h5>
-            <p class="font-normal text-gray-700 dark:text-gray-400">34</p>
+            <p id="humidity" class="font-normal text-gray-700 dark:text-gray-400">-</p>
         </div>
         <div  class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Description</h5>
-            <p class="font-normal text-gray-700 dark:text-gray-400">34</p>
+            <p id="description" class="font-normal text-gray-700 dark:text-gray-400">-</p>
         </div>
         <div  class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Air quality</h5>
-            <p class="font-normal text-gray-700 dark:text-gray-400">34</p>
+            <p id="aqindex" class="font-normal text-gray-700 dark:text-gray-400">-</p>
         </div>
     </div>
 </div>
 
-
-
 <script src="script.js"></script>
 </body>
 </html>
-
-
