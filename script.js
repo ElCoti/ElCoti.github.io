@@ -8,7 +8,7 @@ function getWeather(city){
     let key="d6c3f1389970196a96ba963dec1b7184"
 
     //request for coordinate
-    fetch("http://api.openweathermap.org/geo/1.0/direct?q="+city+"&limit=1&appid="+key).then(function(coordinate){
+    fetch("https://api.openweathermap.org/geo/1.0/direct?q="+city+"&limit=1&appid="+key).then(function(coordinate){
         return coordinate.json()
     }).then(function(data){
         const lat = data[0]['lat']
