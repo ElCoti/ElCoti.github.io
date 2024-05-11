@@ -23,10 +23,10 @@ function getWeather(city){
             return result.json()
         }).then(function(data){
             //request for air quality
-            fetch("http://api.openweathermap.org/data/2.5/air_pollution?lat="+lat+"&lon="+lon+"&appid="+key).then(function(aqi){
+            fetch("https://api.openweathermap.org/data/2.5/air_pollution?lat="+lat+"&lon="+lon+"&appid="+key).then(function(aqi){
                 return aqi.json()
             }).then(function(data){
-                aqi = data.list[0].main['aqi']
+                const aqi = data.list[0].main['aqi']
 
                 document.getElementById('aqIndex').innerText = aqi+"/5"
             })
@@ -55,7 +55,6 @@ function getWeather(city){
             document.getElementById('sunset').innerText = sunset
             document.getElementById('sunrise').innerText = sunrise
             document.getElementById('maxTemp').innerText = maxTemp
-
         })
     })
 }
