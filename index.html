@@ -7,27 +7,27 @@
 </head>
 <body>
 
-<div class="max-w-screen-xl mx-auto">
+<div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
     <!--NavBar-->
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
-        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <div class="flex items-center space-x-3 rtl:space-x-reverse">
-                <!--Logo and Website name-->
-                <div class="flex items-center mr-60">
-                    <img src="img/Weather Icon.jpeg" class="h-8" alt="Weather Logo" />
-                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">WeatherSearch</span>
-                </div>
+        <div class="max-w-screen-xl flex flex-col items-center justify-center mx-auto p-4 space-y-4">
+            <!--Logo and Website name-->
+            <div class="flex justify-center items-center">
+                <img src="img/Weather Icon.jpeg" class="h-8" alt="Weather Logo" />
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white ml-2">WeatherSearch</span>
+            </div>
 
-                <form class="max-w-lg mx-auto flex items-center" onsubmit="showWeather(); return false;">
-                    <div class="relative">
+            <div class="w-full max-w-md flex items-center">
+                <form class="relative w-full" onsubmit="showWeather(); return false;">
+                    <div class="relative w-full">
                         <!--Search icon-->
-                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                             <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                             </svg>
                         </div>
-                        <input type="search" id="cityInput" class="block w-auto min-w-[300px] p-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter a city name" required />
-                        <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm py-1 px-3 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+                        <input type="search" id="cityInput" class="block w-full p-3 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter a city name" required />
+                        <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm py-1 px-3 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
                     </div>
                 </form>
             </div>
@@ -35,52 +35,52 @@
     </nav>
 
     <!--Cards-->
-    <div class="ml-2 grid grid-cols-3 gap-3 mt-24">
-        <div  class="mr-4 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mt-8">
+        <div class="block p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Temperature</h5>
             <p id="temperature" class="font-normal text-gray-700 dark:text-gray-400">-</p>
         </div>
-        <div  class="mr-4 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-            <h5  class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Felt temperature</h5>
+        <div class="block p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Felt temperature</h5>
             <p id="feltTemp" class="font-normal text-gray-700 dark:text-gray-400">-</p>
         </div>
-        <div  class="mr-4 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <div class="block p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Max temperature</h5>
             <p id="maxTemp" class="font-normal text-gray-700 dark:text-gray-400">-</p>
         </div>
-        <div  class="mr-4 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <div class="block p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Pressure</h5>
             <p id="pressure" class="font-normal text-gray-700 dark:text-gray-400">-</p>
         </div>
-        <div  class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <div class="block p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Humidity</h5>
             <p id="humidity" class="font-normal text-gray-700 dark:text-gray-400">-</p>
         </div>
-        <div  class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <div class="block p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Description</h5>
             <p id="description" class="font-normal text-gray-700 dark:text-gray-400">-</p>
         </div>
-        <div  class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <div class="block p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Wind</h5>
             <p id="wind" class="font-normal text-gray-700 dark:text-gray-400">-</p>
         </div>
-        <div  class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <div class="block p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Air quality</h5>
             <p id="aqIndex" class="font-normal text-gray-700 dark:text-gray-400">-</p>
         </div>
-        <div  class="mr-4 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <div class="block p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Clouds</h5>
             <p id="clouds" class="font-normal text-gray-700 dark:text-gray-400">-</p>
         </div>
-        <div  class="mr-4 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <div class="block p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Current time</h5>
             <p id="dTime" class="font-normal text-gray-700 dark:text-gray-400">-</p>
         </div>
-        <div  class="mr-4 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <div class="block p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Sunrise</h5>
             <p id="sunrise" class="font-normal text-gray-700 dark:text-gray-400">-</p>
         </div>
-        <div  class="mr-4 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <div class="block p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Sunset</h5>
             <p id="sunset" class="font-normal text-gray-700 dark:text-gray-400">-</p>
         </div>
