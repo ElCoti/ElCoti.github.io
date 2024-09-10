@@ -1,7 +1,7 @@
-
+let lat=0
+let lon=0
 function showWeather(){
     const city =document.getElementById('cityInput').value
-    console.log(city)
     getWeather(city)
 }
 
@@ -12,11 +12,8 @@ function getWeather(city){
     fetch("https://api.openweathermap.org/geo/1.0/direct?q="+city+"&limit=1&appid="+key).then(function(coordinate){
         return coordinate.json()
     }).then(function(data){
-        const lat = data[0]['lat']
-        const lon=data[0][`lon`]
-
-        console.log(lat)
-        console.log(lon)
+         lat = data[0]['lat']
+         lon=data[0][`lon`]
 
         //request for weather
         fetch("https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&units=metric&lang=it&appid="+key).then(function(result){
@@ -58,4 +55,40 @@ function getWeather(city){
         })
     })
 }
+
+
+
+if (lat === 0 || lon === 0) {
+    var map = L.map('map', {
+        zoomControl: false,
+        dragging: false,
+        touchZoom: false,
+        scrollWheelZoom: false,
+        doubleClickZoom: false,
+        boxZoom: false,
+        keyboard: false
+    }).setView([41, 12], 5);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+} else {
+    var map = L.map('map', {
+        zoomControl: false,
+        dragging: false,
+        touchZoom: false,
+        scrollWheelZoom: false,
+        doubleClickZoom: false,
+        boxZoom: false,
+        keyboard: false
+    }).setView([41, 12], 9);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+}
+
+
 
